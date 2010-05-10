@@ -10,16 +10,14 @@ class Furi_Core {
 	
 	// Configuration
 	protected $config;
-	
-	// Driver
-	//protected $driver;
 
+	// fURI instance
 	public static $instance;
 	
 	/**
 	 * Create an instance of fURI.
 	 * 
-	 * @return  object
+	 * @return object
 	 */
 	public static function factory($config = array())
 	{
@@ -88,9 +86,6 @@ class Furi_Core {
 
 		// Save the config in the object
 		$this->config = $config;
-
-		// Load the driver for access
-		//$this->driver = $config->driver;
 	}
 	
 	public function get($uri)

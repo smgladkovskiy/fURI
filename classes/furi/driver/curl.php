@@ -18,6 +18,7 @@ class Furi_Driver_cURL extends Furi_Core implements Furi_Driver_Interface {
 	public function __construct($config = array())
 	{
 		parent::__construct($config);
+		
 		// Create a cURL handle
 		$this->ch = curl_init();
 		
@@ -25,12 +26,20 @@ class Furi_Driver_cURL extends Furi_Core implements Furi_Driver_Interface {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 	}
 
+	/**
+	 * Close cURL session.
+	 */
 	public function __destruct()
 	{
 		curl_close($this->ch);
-		parent::__destruct();
 	}
 
+	/**
+	 * Perform a GETrequest.
+	 *
+	 * @param  string $uri
+	 * @return string
+	 */
 	public function get($uri)
 	{
 		curl_setopt($this->ch, CURLOPT_URL,     $uri);
@@ -38,7 +47,14 @@ class Furi_Driver_cURL extends Furi_Core implements Furi_Driver_Interface {
 		
 		return curl_exec($this->ch);
 	}
-	
+
+	/**
+	 * Perform a POST request.
+	 *
+	 * @param  string $uri
+	 * @param  array  $data
+	 * @return string
+	 */
 	public function post($uri, $data)
 	{
 		curl_setopt($this->ch, CURLOPT_URL,        $uri);
@@ -48,4 +64,4 @@ class Furi_Driver_cURL extends Furi_Core implements Furi_Driver_Interface {
 		return curl_exec($this->ch);
 	}
 
-} // End Furi_cURL_Driver
+} // End Furi_Driver_cURL

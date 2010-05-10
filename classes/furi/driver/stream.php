@@ -15,6 +15,12 @@ class Furi_Driver_Stream extends Furi_Core implements Furi_Driver_Interface {
 		)
 	);
 
+	/**
+	 * Perform a GET request.
+	 *
+	 * @param  string $uri
+	 * @return string
+	 */
 	public function get($uri)
 	{
 		$this->options['http']['method'] = 'GET';
@@ -32,8 +38,9 @@ class Furi_Driver_Stream extends Furi_Core implements Furi_Driver_Interface {
 	 * 
 	 * @todo should also support POSTing files
 	 * 
-	 * @param $uri
-	 * @param $data
+	 * @param  string $uri
+	 * @param  array  $data
+	 * @return string
 	 */
 	public function post($uri, $data)
 	{
