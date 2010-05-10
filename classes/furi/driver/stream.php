@@ -2,10 +2,11 @@
 /**
  * Steam fURI Driver
  * 
- * @package  fURI
- * @author   Beau Dacious <beau@cxzcxz.com>
+ * @package fURI
+ * @author  Beau Dacious <beau@cxzcxz.com>
+ * @author  avis <smgladkovskiy@gmail.com>
  */
-class Furi_Stream_Driver extends Furi_Driver {
+class Furi_Driver_Stream extends Furi_Core implements Furi_Driver_Interface {
 	
 	// Stream context options
 	protected $options = array(
@@ -13,11 +14,7 @@ class Furi_Stream_Driver extends Furi_Driver {
 			'method' => 'GET',
 		)
 	);
-	
-/* ----------------------------------------------------------------------------
-	Interface Methods
----------------------------------------------------------------------------- */
-	
+
 	public function get($uri)
 	{
 		$this->options['http']['method'] = 'GET';

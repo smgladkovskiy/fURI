@@ -1,5 +1,7 @@
-<?php defined('SYSPATH') OR die('No direct access allowed.');
+<?php defined('SYSPATH') or die('No direct access allowed.');
 
-$config['driver'] = 'auto';
+return array(
 
-// End fURI Config
+	'driver' => 'auto',
+
+); // End fURI Config

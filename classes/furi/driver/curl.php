@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct access allowed.');
+<?php defined('SYSPATH') or die('No direct access allowed.');
 /**
  * cURL fURI Driver
  * 
@@ -6,16 +6,18 @@
  * @todo  add support for multi handles?
  * @todo  add support for cookie file
  * 
- * @package  fURI
- * @author   Beau Dacious <beau@cxzcxz.com>
+ * @package fURI
+ * @author  Beau Dacious <beau@cxzcxz.com>
+ * @author  avis <smgladkovskiy@gmail.com>
  */
-class Furi_cURL_Driver extends Furi_Driver {
+class Furi_Driver_cURL extends Furi_Core implements Furi_Driver_Interface {
 
 	// cURL handle
 	protected $ch;
 	
-	public function __construct()
+	public function __construct($config = array())
 	{
+		parent::__construct($config);
 		// Create a cURL handle
 		$this->ch = curl_init();
 		
@@ -26,11 +28,8 @@ class Furi_cURL_Driver extends Furi_Driver {
 	public function __destruct()
 	{
 		curl_close($this->ch);
+		parent::__destruct();
 	}
-
-/* ----------------------------------------------------------------------------
-	Interface Methods
----------------------------------------------------------------------------- */
 
 	public function get($uri)
 	{
